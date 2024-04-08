@@ -1,0 +1,80 @@
+%%%%%%%% Title slide details %%%%%%%%%%%%%%
+
+
+% Background Image
+\newcommand{\myBackround}
+{
+    \includegraphics[width=\paperwidth]{Background1.png}
+}
+
+% Title
+\newcommand{\myTitle}
+{
+   ThatMetricTimeline (TMT)
+}
+
+% Subtitle
+\newcommand{\mySubTitle}
+{
+    A fully-open source experiment tracking library 
+}
+
+% Author
+\newcommand{\myAuthor}   
+{
+    Alessio Molinari
+}
+
+% Affiliation
+\newcommand{\myAffiliate}
+{
+    %\textsuperscript{1}ISTI-CNR, \textsuperscript{2}University of Pisa
+ % Affiliation here
+}
+
+% Presentation Date
+\newcommand{\myDate}   
+{
+    %\today
+    April 12, 2024
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%% Title slide code %%%%%%%%%%%
+\begin{tikzpicture}[remember picture,overlay]
+
+
+% Background image
+\node[above right,inner sep=0pt] at (current page.south west)
+    {
+        \myBackround
+    };
+    
+% Title & Subtitle
+\node
+[
+    above right=1.5cm and 3cm,
+    anchor=east,
+    align=center,
+    %fill=strg-color-light,
+    text=strg-color-dark,
+    rounded corners,
+    inner xsep=15pt,
+    inner ysep=10pt, 
+    minimum width=0.7\textwidth,
+    text width=0.6\textwidth
+] (title) at (current page.center)
+{
+    \LARGE \myTitle  \\[5pt]
+    \small \mySubTitle
+};
+
+% Author 
+\node[below right=3.8cm and 1cm, text=white] (author) at (title.south east){\myAuthor};
+
+% Date
+\node[below=0.01mm, text=white] (date) at (author.south){\myDate};
+
+\end{tikzpicture}
