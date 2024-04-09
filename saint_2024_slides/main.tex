@@ -1,6 +1,7 @@
 % beautiful title slides in Beamer
 % Model 1
 % latex-beamer.com
+%
 
 \documentclass[aspectratio=169,xcolor={dvipsnames}]{beamer}
 
@@ -143,8 +144,8 @@
       \item hardlinking all files that didn't change since last snapshot;
       \item copying only files that changed
     \end{itemize}
-    Basically, this is to avoid your local storage explodes when you're convinced that 
-    \\those two layers are to blame for such a low F1, and you're determined to try all possible 
+    Basically, this is to avoid your local storage explodes when you're convinced that
+    \\those two layers are to blame for such a low F1, and you're determined to try all possible
     combinations by hand.
   \end{frame}
   \begin{frame}{TMT: local database}
@@ -164,7 +165,7 @@
             lr.fit(x_tr, y_tr)
             preds = lr.predict(x_te)
             return {
-              'f1': f1_score(y_te, preds), 
+              'f1': f1_score(y_te, preds),
               'accuracy': accuracy_score(y_te, preds)
             }
       \end{minted}
@@ -179,7 +180,7 @@
         preds = lr.predict(x_te)
         tmt_save(preds, name='lr_predictions')
         return {
-          'f1': f1_score(y_te, preds), 
+          'f1': f1_score(y_te, preds),
           'accuracy': accuracy_score(y_te, preds)
         }
     \end{minted}
@@ -189,17 +190,17 @@
   \begin{frame}{TMT: the TUI interface}
    \begin{figure}
     \includegraphics[width=0.90\textwidth]{main_tui.png}
-   \end{figure} 
+   \end{figure}
   \end{frame}
   \begin{frame}{TMT: the TUI interface}
    \begin{figure}
     \includegraphics[width=0.90\textwidth]{tmt_search.png}
-   \end{figure} 
+   \end{figure}
   \end{frame}
   \begin{frame}{TMT: the TUI interface}
    \begin{figure}
     \includegraphics[width=0.90\textwidth]{detail_tui.png}
-   \end{figure} 
+   \end{figure}
   \end{frame}
   \begin{frame}[fragile]{TMT: loading from code}
     \begin{minted}[highlightlines={4,6,10,13}]{python3}
@@ -220,7 +221,7 @@
     \end{minted}
   \end{frame}
 
-  \section{\texttt{tmt} flaws, aka I might need your help} 
+  \section{\texttt{tmt} flaws, aka I might need your help}
   \begin{frame}{TMT: flaws and issues}
     \texttt{tmt} works and I use it more or less regularly, even today.
     However:
@@ -237,7 +238,7 @@
       \item accessing experiments (e.g., last run) should be more straight forward;
       \item \texttt{TmtManager} should be able to deal wth more than one experiment;
       \item probably more;
-    \end{itemize} 
+    \end{itemize}
   \end{frame}
   \begin{frame}{Call for contributions}
     Contributing to open source is cool:
@@ -250,7 +251,7 @@
     \texttt{tmt} is a small project and it might be a good place to start :)
   \end{frame}
   \begin{frame}{Call for contributions}
-    Sometimes it can be scary to publish or contribute code, because we think it's not good enough, or it'll be 
+    Sometimes it can be scary to publish or contribute code, because we think it's not good enough, or it'll be
     judged harshly. But we all write bad code, and that's fine.
   \end{frame}
 
@@ -262,7 +263,7 @@
     {
       \begin{frame}
           \centering
-           \Large Thank you! \emoji{waving-hand} \\ 
+           \Large Thank you! \emoji{waving-hand} \\
            \small Questions? \emoji{person-raising-hand}
       \end{frame}
     }
