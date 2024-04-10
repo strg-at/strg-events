@@ -16,9 +16,12 @@
 % Subtitle
 \newcommand{\mySubTitle}
 {
-    A fully-open source experiment tracking library 
+    A fully-open source experiment tracking library
 }
-
+\newcommand{\repoUrl}
+{
+    \url{https://github.com/strg-at/strg-events}
+}
 % Author
 \newcommand{\myAuthor}   
 {
@@ -69,6 +72,11 @@
 {
     \LARGE \myTitle  \\[5pt]
     \small \mySubTitle
+};
+
+% repo URL
+\node[below=0.8cm,text=strg-color-dark] (url) at (title.south){
+    \small \repoUrl
 };
 
 % Author 
