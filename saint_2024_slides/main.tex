@@ -144,12 +144,12 @@
       \item copying only files that changed
     \end{itemize}
     Basically, this is to avoid your local storage explodes when you're convinced that 
-    \\those two layers are to blame for such a low F1, and you're determined to try all possible 
+    those two layers are to blame for such a low F1, and you're determined to try all possible 
     combinations by hand.
   \end{frame}
   \begin{frame}{TMT: local database}
     \texttt{tmt} local ``database'' is actually a bunch of \texttt{json} files stored
-    in the \texttt{.tmt} folder at\\the root of your repository.\\
+    in the \texttt{.tmt} folder at the root of your repository.\\
     You can simply read those files, but \texttt{tmt} exposes a few utilities to deal with them.
   \end{frame}
 
@@ -182,6 +182,16 @@
           'f1': f1_score(y_te, preds), 
           'accuracy': accuracy_score(y_te, preds)
         }
+    \end{minted}
+  \end{frame}
+  \begin{frame}[fragile]{TMT: tracking your experiments}
+    \begin{minted}{python3}
+      def train_and_predict(...):
+        ...
+
+      if __name__ == '__main__':
+          decorated = tmt_recorder(name=sys.argv[1])(train_and_predict)
+          decorated(...)
     \end{minted}
   \end{frame}
 
@@ -219,6 +229,15 @@
           print(f"{name}: {val}")
     \end{minted}
   \end{frame}
+  \begin{frame}[fragile]{TMT: loading from code}
+    \begin{minted}{python3}
+      # If you need to do other stuff, like searching for
+      # experiments between two datetimes and so on
+      # you can access the `db` member like
+      d = some_date
+      manager.db.get_entries_greater_than_date(d)
+    \end{minted}
+  \end{frame}
 
   \section{\texttt{tmt} flaws, aka I might need your help} 
   \begin{frame}{TMT: flaws and issues}
@@ -235,7 +254,7 @@
     \begin{itemize}
       \item the TUI is cool, but a CLI would be more practical;
       \item accessing experiments (e.g., last run) should be more straight forward;
-      \item \texttt{TmtManager} should be able to deal wth more than one experiment;
+      \item \texttt{TmtManager} should be able to deal with more than one experiment;
       \item probably more;
     \end{itemize} 
   \end{frame}
@@ -267,5 +286,24 @@
       \end{frame}
     }
   }
+
+  \appendix
+  \begin{frame}[fragile]{Using a custom save function}
+    \begin{minted}{python3}
+      def my_save_fn(obj, path):
+        np.save(path, obj)
+
+      def save_fn_path(obj, path):
+        new_path = 'custom_path.npy'
+        np.save(new_path, obj)
+        return new_path
+
+      def train_and_predict(...):
+        tmt_save(preds, name='lr_predictions', custom_save=my_save_fn, extension='.npy')
+        tmt_save(preds, name='lr_predictions', custom_save=my_save_fn_path)
+
+    \end{minted}
+    
+  \end{frame}
 
 \end{document}
